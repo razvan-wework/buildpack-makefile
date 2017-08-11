@@ -4,9 +4,21 @@ set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+ENV_DIR=$3
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 cd $BUILD_DIR
+
+# env
+
+if [ -d "$ENV_DIR" ]; then
+  for e in $(ls $ENV_DIR); do
+    export "$e=$(cat $ENV_DIR/$e)"
+    :
+  done
+fi
+
+# compile
 
 echo "-----> Running make heroku"
 make heroku
