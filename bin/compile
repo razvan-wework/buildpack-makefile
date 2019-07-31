@@ -20,6 +20,6 @@ fi
 
 # compile
 
-echo "-----> Running make heroku"
-make heroku
+echo "-----> Running make"
+make
 echo "-----> Done"
